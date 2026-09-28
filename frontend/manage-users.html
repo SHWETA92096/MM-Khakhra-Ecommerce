@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Users | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .admin-management {
+            padding: 45px 8% 80px;
+            background: #f6f8f3;
+            min-height: 70vh;
+        }
+
+        .management-header {
+            background: linear-gradient(135deg, #6d8c3d, #8faa55);
+            color: white;
+            padding: 30px 35px;
+            border-radius: 22px;
+            margin-bottom: 30px;
+        }
+
+        .management-header h1 {
+            margin: 0 0 5px;
+        }
+
+        .management-header p {
+            margin: 0;
+            opacity: .9;
+        }
+
+        .users-box {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.06);
+            overflow-x: auto;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .users-table th {
+            color: #6d8c3d;
+        }
+
+        .role-user {
+            background: #edf3ff;
+            color: #3974d8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .role-admin {
+            background: #eef5df;
+            color: #6d8c3d;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .make-admin-btn {
+            border: none;
+            background: #6d8c3d;
+            color: white;
+            padding: 8px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+            <img src="images/logo.png" alt="Logo">
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-orders.html">
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="manage-users.html" class="active">
+                Users
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="admin-dashboard.html">
+            <i class="fa-solid fa-gauge"></i>
+        </a>
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </div>
+
+</header>
+
+
+<section class="admin-management">
+
+    <div class="management-header">
+
+        <p class="small-title">
+            ADMIN PANEL
+        </p>
+
+        <h1>
+            Manage Users 👥
+        </h1>
+
+        <p>
+            View customers and manage administrator access.
+        </p>
+
+    </div>
+
+
+    <div class="users-box">
+
+        <table class="users-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="usersTable">
+
+                <tr>
+
+                    <td colspan="5">
+                        Loading users...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h2>M M Khakhra</h2>
+
+    <p>Fresh • Crispy • Healthy</p>
+
+    <p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+<script src="js/manage-users.js"></script>
+
+</body>
+
+</html>

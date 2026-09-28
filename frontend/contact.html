@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =========================================
+           CONTACT PAGE
+        ========================================= */
+
+        .contact-page {
+            background: #f6f8f3;
+            padding: 50px 8% 80px;
+            min-height: 70vh;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-header h1 {
+            color: #5d7933;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            color: #777;
+            font-size: 16px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Contact Information */
+
+        .contact-info {
+            background: linear-gradient(135deg, #6d8c3d, #8faa55);
+            color: white;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(70, 90, 40, 0.15);
+        }
+
+        .contact-info h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .contact-info > p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: white;
+            color: #6d8c3d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item h3 {
+            margin: 0 0 4px;
+            font-size: 16px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Contact Form */
+
+        .contact-form-box {
+            background: white;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .contact-form-box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .contact-form-box > p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .contact-input {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .contact-input i {
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            color: #6d8c3d;
+        }
+
+        .contact-input input,
+        .contact-input textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 15px 14px 45px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .contact-input textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-input input:focus,
+        .contact-input textarea:focus {
+            border-color: #6d8c3d;
+            box-shadow: 0 0 0 3px rgba(109,140,61,0.1);
+        }
+
+        .send-message-btn {
+            width: 100%;
+            border: none;
+            background: #6d8c3d;
+            color: white;
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-message-btn:hover {
+            background: #58752e;
+            transform: translateY(-2px);
+        }
+
+        /* Map / Location */
+
+        .location-box {
+            max-width: 1100px;
+            margin: 30px auto 0;
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .location-box h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .location-placeholder {
+            background: #eef3e7;
+            border-radius: 15px;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6d8c3d;
+        }
+
+        .location-placeholder i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 800px) {
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header h1 {
+                font-size: 30px;
+            }
+
+            .contact-page {
+                padding: 35px 5% 60px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <span>
+        🚚 Free Delivery on Orders Above ₹499
+    </span>
+
+    <span>
+        📞 +91 9876543210
+    </span>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>
+            M M Khakhra
+        </h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">
+                Categories
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html" class="active">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+
+    <!-- Search -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="navbarSearch"
+            placeholder="Search Khakhra..."
+            autocomplete="off">
+
+        <button id="navbarSearchBtn">
+
+            <i class="fa fa-search"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- Icons -->
+
+    <div class="icons">
+
+        <a href="wishlist.html">
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <a
+            href="#"
+            id="accountLink">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="cart-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CONTACT PAGE ================= -->
+
+<section class="contact-page">
+
+
+    <div class="contact-header">
+
+        <h1>
+            Contact Us 📞
+        </h1>
+
+        <p>
+            Have a question? We'd love to hear from you.
+        </p>
+
+    </div>
+
+
+    <div class="contact-container">
+
+
+        <!-- ================= CONTACT INFO ================= -->
+
+        <div class="contact-info">
+
+            <h2>
+                Get In Touch
+            </h2>
+
+            <p>
+                We're here to help you with your orders,
+                products and any questions you may have.
+            </p>
+
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <div>
+
+                    <h3>
+                        Address
+                    </h3>
+
+                    <p>
+                        Mumbai, Maharashtra, India
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <div>
+
+                    <h3>
+                        Phone
+                    </h3>
+
+                    <p>
+                        +91 9876543210
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        mmkhakhra@gmail.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <div>
+
+                    <h3>
+                        Business Hours
+                    </h3>
+
+                    <p>
+                        Monday – Saturday<br>
+                        9:00 AM – 8:00 PM
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= CONTACT FORM ================= -->
+
+        <div class="contact-form-box">
+
+            <h2>
+                Send Us a Message
+            </h2>
+
+            <p>
+                Fill out the form and we'll get back to you soon.
+            </p>
+
+
+            <form id="contactForm">
+
+
+                <div class="contact-input">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Your Name"
+                        required>
+
+                </div>
+
+
+                <div class="contact-input">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Your Email"
+                        required>
+
+                </div>
+
+
+                <div class="contact-input">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        placeholder="Your Phone Number"
+                        required>
+
+                </div>
+
+
+                <div class="contact-input">
+
+                    <i class="fa-solid fa-message"></i>
+
+                    <textarea
+                        id="contactMessage"
+                        placeholder="Write your message..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="send-message-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LOCATION ================= -->
+
+    <div class="location-box">
+
+        <h2>
+            📍 Our Location
+        </h2>
+
+        <div class="location-placeholder">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <strong>
+                Mumbai, Maharashtra
+            </strong>
+
+            <p>
+                M M Khakhra
+            </p>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        📍 Mumbai, Maharashtra
+    </p>
+
+    <p>
+        📞 +91 9876543210
+    </p>
+
+    <p>
+        📧 mmkhakhra@gmail.com
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+// ==========================================
+// CONTACT FORM
+// ==========================================
+
+
+const contactForm =
+    document.getElementById("contactForm");
+
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "contactName"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "contactEmail"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "contactPhone"
+                ).value.trim();
+
+
+            const message =
+                document.getElementById(
+                    "contactMessage"
+                ).value.trim();
+
+
+            if (
+                !name ||
+                !email ||
+                !phone ||
+                !message
+            ) {
+
+                alert(
+                    "Please fill all the fields."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://192.168.0.104:5000/api/contact",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                name: name,
+                                email: email,
+                                phone: phone,
+                                message: message
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    alert(
+                        "❌ " +
+                        (data.message ||
+                        "Something went wrong.")
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "✅ Thank you, " +
+                    name +
+                    "! Your message has been sent successfully."
+                );
+
+
+                contactForm.reset();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Contact Error:",
+                    error
+                );
+
+                alert(
+                    "❌ Unable to send message. Please make sure the server is running."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

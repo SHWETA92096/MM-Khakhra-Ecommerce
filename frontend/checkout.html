@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<section class="checkout-page">
+
+    <div class="checkout-container">
+
+
+        <!-- ================= LEFT SIDE ================= -->
+
+        <div class="checkout-form">
+
+            <h1>💳 Secure Checkout</h1>
+
+            <p>
+                Complete your order details below.
+            </p>
+
+
+            <form id="checkoutForm">
+
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Full Name"
+                        required>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="input-group">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Phone Number"
+                        required>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="input-group textarea-group">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <textarea
+                        id="address"
+                        placeholder="Delivery Address"
+                        required></textarea>
+
+                </div>
+
+
+                <!-- CITY + PINCODE -->
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-city"></i>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="City"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <i class="fa-solid fa-map-pin"></i>
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="Pincode"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <h3>
+                    Payment Method
+                </h3>
+
+
+                <div class="payment-options">
+
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked>
+
+                        <i class="fa-solid fa-money-bill-wave"></i>
+
+                        Cash on Delivery
+
+                    </label>
+
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card Payment">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                        Card Payment
+
+                    </label>
+
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI / Google Pay">
+
+                        <i class="fa-brands fa-google-pay"></i>
+
+                        UPI / Google Pay
+
+                    </label>
+
+
+                </div>
+
+
+                <!-- PLACE ORDER -->
+
+                <button
+                    type="submit"
+                    class="place-order-btn"
+                    id="placeOrderBtn">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Place Order
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div class="order-summary">
+
+            <h2>
+                🛍 Order Summary
+            </h2>
+
+
+            <!-- CART ITEMS -->
+
+            <div id="summaryItems">
+
+                <!-- Cart products will appear here -->
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- SUBTOTAL -->
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <!-- ================= DISCOUNT CODE ================= -->
+
+            <div class="discount-section">
+
+                <div class="discount-title">
+
+                    <span>🎟️</span>
+
+                    <span>
+                        Have a discount code?
+                    </span>
+
+                </div>
+
+
+                <div class="discount-input-group">
+
+                    <input
+                        type="text"
+                        id="discountCodeInput"
+                        placeholder="Enter discount code"
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        type="button"
+                        id="applyDiscountBtn"
+                        onclick="applyDiscount()">
+
+                        Apply
+
+                    </button>
+
+                </div>
+
+
+                <div id="discountMessage"></div>
+
+            </div>
+
+
+            <!-- ================= DISCOUNT ================= -->
+
+            <div
+                class="summary-row"
+                id="discountRow"
+                style="display: none;">
+
+                <span>
+                    Discount
+                </span>
+
+                <span id="discountDisplay">
+                    - ₹0
+                </span>
+
+            </div>
+
+
+            <!-- ================= DELIVERY ================= -->
+
+            <div class="summary-row">
+
+    <span>
+        Delivery
+    </span>
+
+    <span id="deliveryDisplay">
+        ₹40
+    </span>
+
+</div>
+
+
+            <!-- ================= TOTAL ================= -->
+
+            <div class="summary-row total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="total">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <!-- ================= SECURITY ================= -->
+
+            <div class="secure-box">
+
+                🔒 Your payment information is securely protected.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DISCOUNT CARD ================= -->
+
+<div id="discountModal" class="discount-modal">
+
+    <div class="discount-card">
+
+
+        <!-- CLOSE BUTTON -->
+
+        <button
+            class="discount-close"
+            onclick="closeDiscountCard()">
+
+            ×
+
+        </button>
+
+
+        <!-- ICON -->
+
+        <div class="discount-icon">
+
+            🎁
+
+        </div>
+
+
+        <h2>
+            Thank You for Your Order!
+        </h2>
+
+
+        <p class="discount-message">
+
+            Here's a special reward for your next purchase.
+
+        </p>
+
+
+        <!-- OFFER -->
+
+        <div class="discount-off">
+
+            10% OFF
+
+        </div>
+
+
+        <p class="discount-small">
+
+            Use this code on your next order
+
+        </p>
+
+
+        <!-- DISCOUNT CODE -->
+
+        <div class="discount-code-box">
+
+            <span id="discountCode">
+
+                MMKHAKHRA-XXXXXX
+
+            </span>
+
+
+            <button onclick="copyDiscountCode()">
+
+                📋 Copy
+
+            </button>
+
+        </div>
+
+
+        <p
+            id="copyMessage"
+            class="copy-message">
+        </p>
+
+
+        <!-- CONTINUE -->
+
+        <button
+            class="continue-btn"
+            onclick="continueAfterDiscount()">
+
+            Continue Shopping
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="js/checkout.js"></script>
+
+<script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

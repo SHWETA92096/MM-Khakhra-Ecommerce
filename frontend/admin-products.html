@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Products | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* ================================
+           ADMIN MANAGEMENT
+        ================================= */
+
+        .admin-management {
+            padding: 45px 8% 80px;
+            background: #f6f8f3;
+            min-height: 70vh;
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .management-header {
+            background: linear-gradient(135deg, #6d8c3d, #8faa55);
+            color: white;
+            padding: 30px 35px;
+            border-radius: 22px;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .management-header h1 {
+            margin: 0 0 7px;
+        }
+
+        .management-header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+
+        /* ================================
+           ADD PRODUCT BUTTON
+        ================================= */
+
+        .add-product-btn {
+            background: white;
+            color: #6d8c3d;
+
+            border: none;
+
+            padding: 13px 22px;
+
+            border-radius: 30px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            white-space: nowrap;
+        }
+
+        .add-product-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+
+        /* ================================
+           TABLE
+        ================================= */
+
+        .products-table-box {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+
+            overflow-x: auto;
+        }
+
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .products-table th,
+        .products-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .products-table th {
+            color: #6d8c3d;
+            font-weight: 600;
+        }
+
+        .products-table tbody tr:hover {
+            background: #fafcf7;
+        }
+
+
+        /* ================================
+           PRODUCT IMAGE
+        ================================= */
+
+        .product-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            border: 1px solid #eee;
+        }
+
+
+        /* ================================
+           ACTION BUTTONS
+        ================================= */
+
+        .action-btn {
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            margin-right: 5px;
+
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .edit-btn {
+            background: #edf3ff;
+            color: #3974d8;
+        }
+
+        .delete-btn {
+            background: #fff0f0;
+            color: #e53935;
+        }
+
+
+        /* ================================
+           MODAL
+        ================================= */
+
+        .product-modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0,0,0,0.55);
+
+            z-index: 9999;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            box-sizing: border-box;
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+
+        /* ================================
+           MODAL CONTENT
+        ================================= */
+
+        .product-modal-content {
+
+            background: white;
+
+            width: 100%;
+
+            max-width: 620px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+
+            position: relative;
+
+            animation: modalOpen 0.25s ease;
+        }
+
+
+        @keyframes modalOpen {
+
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ================================
+           MODAL HEADER
+        ================================= */
+
+        .modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+
+            margin: 0;
+
+            color: #4f682d;
+        }
+
+        .close-modal {
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #f3f3f3;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+
+            background: #ffe9e9;
+
+            color: #d33;
+        }
+
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .product-form-group {
+
+            margin-bottom: 18px;
+        }
+
+        .product-form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: 600;
+
+            color: #444;
+        }
+
+
+        .product-form-group input,
+        .product-form-group textarea,
+        .product-form-group select {
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            box-sizing: border-box;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        .product-form-group input:focus,
+        .product-form-group textarea:focus,
+        .product-form-group select:focus {
+
+            border-color: #7c9947;
+
+            box-shadow:
+                0 0 0 3px rgba(124,153,71,0.12);
+        }
+
+
+        /* ================================
+           SELECT / SHAPE
+        ================================= */
+
+        .product-select {
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            -moz-appearance: none;
+
+            background-image:
+                linear-gradient(45deg, transparent 50%, #6d8c3d 50%),
+                linear-gradient(135deg, #6d8c3d 50%, transparent 50%);
+
+            background-position:
+                calc(100% - 18px) 50%,
+                calc(100% - 13px) 50%;
+
+            background-size:
+                5px 5px,
+                5px 5px;
+
+            background-repeat: no-repeat;
+
+            cursor: pointer;
+
+            padding-right: 40px !important;
+        }
+
+
+        /* ================================
+           FORM ROW
+        ================================= */
+
+        .product-form-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* ================================
+           IMAGE UPLOAD
+        ================================= */
+
+        .image-upload-box {
+
+            border: 2px dashed #cfd8c0;
+
+            background: #fafcf7;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            transition: 0.2s;
+        }
+
+        .image-upload-box:hover {
+
+            border-color: #7c9947;
+
+            background: #f5f9ef;
+        }
+
+        .image-upload-box i {
+
+            font-size: 28px;
+
+            color: #7c9947;
+
+            margin-bottom: 8px;
+        }
+
+        .image-upload-box input {
+
+            border: none;
+
+            box-shadow: none;
+
+            padding: 8px 0;
+
+            background: transparent;
+        }
+
+        .image-upload-box small {
+
+            display: block;
+
+            color: #777;
+
+            margin-top: 5px;
+        }
+
+
+        /* ================================
+           IMAGE PREVIEW
+        ================================= */
+
+        #imagePreview {
+
+            display: none;
+
+            width: 100px;
+
+            height: 100px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            margin: 12px auto 0;
+
+            border: 1px solid #ddd;
+        }
+
+
+        /* ================================
+           SAVE BUTTON
+        ================================= */
+
+        .save-product-btn {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d8c3d,
+                    #8faa55
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+
+            transition: 0.3s;
+        }
+
+        .save-product-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 18px rgba(109,140,61,0.25);
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media(max-width:700px) {
+
+            .management-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .product-form-row {
+
+                grid-template-columns: 1fr;
+            }
+
+            .product-modal-content {
+
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     TOP BAR
+================================ -->
+
+<div class="top-bar">
+
+    <span>
+        🚚 Free Delivery on Orders Above ₹499
+    </span>
+
+    <span>
+        📞 +91 9876543210
+    </span>
+
+</div>
+
+
+
+<!-- ================================
+     NAVBAR
+================================ -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>
+            M M Khakhra
+        </h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="admin-products.html"
+                class="active">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-orders.html">
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="manage-users.html">
+                Users
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a
+            href="admin-dashboard.html"
+            title="Dashboard">
+
+            <i class="fa-solid fa-gauge"></i>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            title="Website">
+
+            <i class="fa-solid fa-house"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================================
+     PRODUCT MANAGEMENT
+================================ -->
+
+<section class="admin-management">
+
+
+    <!-- HEADER -->
+
+    <div class="management-header">
+
+        <div>
+
+            <p class="small-title">
+                ADMIN PANEL
+            </p>
+
+            <h1>
+                Manage Products 📦
+            </h1>
+
+            <p>
+                Add, edit and manage your Khakhra products.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-product-btn"
+            onclick="openAddProductModal()">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Product
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ================================
+         PRODUCTS TABLE
+    ================================= -->
+
+    <div class="products-table-box">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Image</th>
+
+                    <th>Product</th>
+
+                    <th>Flavour</th>
+
+                    <th>Weight</th>
+
+                    <th>Price</th>
+
+                    <th>Stock</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="productsTable">
+
+                <tr>
+
+                    <td colspan="7">
+                        Loading products...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     ADD PRODUCT MODAL
+================================ -->
+
+<div
+    id="productModal"
+    class="product-modal">
+
+
+    <div class="product-modal-content">
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                ➕ Add New Product
+            </h2>
+
+
+            <button
+                type="button"
+                class="close-modal"
+                onclick="closeProductModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ================================
+             FORM
+        ================================= -->
+
+        <form
+            id="addProductForm"
+            enctype="multipart/form-data">
+
+
+            <!-- PRODUCT NAME -->
+
+            <div class="product-form-group">
+
+                <label for="productName">
+                    Product Name
+                </label>
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Enter product name"
+                    required>
+
+            </div>
+
+
+
+            <!-- FLAVOUR -->
+
+            <div class="product-form-group">
+
+                <label for="productFlavor">
+                    Flavour
+                </label>
+
+                <input
+                    type="text"
+                    id="productFlavor"
+                    placeholder="Example: Garlic, Cheese, Punjabi"
+                    required>
+
+            </div>
+
+
+
+            <!-- WEIGHT + PRICE -->
+
+            <div class="product-form-row">
+
+
+                <div class="product-form-group">
+
+                    <label for="productWeight">
+                        Weight
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productWeight"
+                        placeholder="Example: 40g or 200g"
+                        required>
+
+                </div>
+
+
+                <div class="product-form-group">
+
+                    <label for="productPrice">
+                        Price (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="Enter price"
+                        min="0"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STOCK -->
+
+            <div class="product-form-group">
+
+                <label for="productStock">
+                    Stock Quantity
+                </label>
+
+                <input
+                    type="number"
+                    id="productStock"
+                    placeholder="Enter stock quantity"
+                    min="0"
+                    required>
+
+            </div>
+
+
+
+            <!-- SHAPE -->
+
+            <div class="product-form-group">
+
+                <label for="productShape">
+                    Shape
+                </label>
+
+                <select
+                    id="productShape"
+                    class="product-select"
+                    required>
+
+                    <option value="">
+                        Select Shape
+                    </option>
+
+                    <option value="Mini">
+                        Mini
+                    </option>
+
+                    <option value="Round">
+                        Round
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- IMAGE -->
+
+            <div class="product-form-group">
+
+                <label for="productImage">
+                    Product Image 📷
+                </label>
+
+
+                <div class="image-upload-box">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <input
+                        type="file"
+                        id="productImage"
+                        accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                        required>
+
+                    <small>
+                        JPG, JPEG, PNG or WEBP • Maximum 5 MB
+                    </small>
+
+
+                    <img
+                        id="imagePreview"
+                        alt="Image Preview">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="product-form-group">
+
+                <label for="productDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="productDescription"
+                    placeholder="Enter product description"
+                    required></textarea>
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <button
+                type="submit"
+                class="save-product-btn"
+                id="saveProductBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Product
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+
+<!-- ================================
+     JAVASCRIPT
+================================ -->
+
+<script src="js/admin-products.js"></script>
+
+
+<script>
+
+    /* ==========================================
+       OPEN MODAL
+    ========================================== */
+
+    function openAddProductModal() {
+
+        const modal =
+            document.getElementById("productModal");
+
+        const form =
+            document.getElementById("addProductForm");
+
+        form.reset();
+
+        document.getElementById("modalTitle").innerHTML =
+            "➕ Add New Product";
+
+        document.getElementById("saveProductBtn").innerHTML =
+            '<i class="fa-solid fa-plus"></i> Add Product';
+
+        document.getElementById("imagePreview").style.display =
+            "none";
+
+        modal.classList.add("active");
+
+    }
+
+
+    /* ==========================================
+       CLOSE MODAL
+    ========================================== */
+
+    function closeProductModal() {
+
+        document
+            .getElementById("productModal")
+            .classList.remove("active");
+
+    }
+
+
+    /* ==========================================
+       CLOSE WHEN CLICKING OUTSIDE
+    ========================================== */
+
+    document
+        .getElementById("productModal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === this) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+    /* ==========================================
+       IMAGE PREVIEW
+    ========================================== */
+
+    document
+        .getElementById("productImage")
+        .addEventListener(
+            "change",
+            function(event) {
+
+                const file =
+                    event.target.files[0];
+
+                const preview =
+                    document.getElementById("imagePreview");
+
+
+                if (!file) {
+
+                    preview.style.display = "none";
+
+                    return;
+
+                }
+
+
+                if (file.size > 5 * 1024 * 1024) {
+
+                    alert(
+                        "❌ Image must be smaller than 5 MB."
+                    );
+
+                    event.target.value = "";
+
+                    preview.style.display = "none";
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function(e) {
+
+                        preview.src =
+                            e.target.result;
+
+                        preview.style.display =
+                            "block";
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>

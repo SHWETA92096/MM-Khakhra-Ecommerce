@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Orders | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* ==========================================
+           ADMIN MANAGEMENT
+        ========================================== */
+
+        .admin-management {
+
+            padding: 45px 8% 80px;
+
+            background: #f6f8f3;
+
+            min-height: 70vh;
+
+        }
+
+
+        .management-header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6d8c3d,
+                    #8faa55
+                );
+
+            color: white;
+
+            padding: 30px 35px;
+
+            border-radius: 22px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .management-header h1 {
+
+            margin: 0 0 5px;
+
+        }
+
+
+        .management-header p {
+
+            margin: 0;
+
+            opacity: .9;
+
+        }
+
+
+        /* ==========================================
+           ORDERS BOX
+        ========================================== */
+
+        .orders-box {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 6px 20px rgba(0,0,0,.06);
+
+            overflow-x: auto;
+
+        }
+
+
+        .orders-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+        }
+
+
+        .orders-table th,
+        .orders-table td {
+
+            padding: 15px;
+
+            border-bottom:
+                1px solid #eee;
+
+            text-align: left;
+
+        }
+
+
+        .orders-table th {
+
+            color: #6d8c3d;
+
+        }
+
+
+        .orders-table td {
+
+            vertical-align: middle;
+
+        }
+
+
+        /* ==========================================
+           STATUS
+        ========================================== */
+
+        .status-select {
+
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            border: 1px solid #ddd;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ==========================================
+           VIEW BUTTON
+        ========================================== */
+
+        .view-order-btn {
+
+            border: none;
+
+            background: #eef5df;
+
+            color: #6d8c3d;
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+
+        .view-order-btn:hover {
+
+            background: #6d8c3d;
+
+            color: white;
+
+        }
+
+
+        /* ==========================================
+           ORDER MODAL
+        ========================================== */
+
+        .order-modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 9999;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.55);
+
+            padding: 30px;
+
+            overflow-y: auto;
+
+        }
+
+
+        .order-modal-content {
+
+            max-width: 900px;
+
+            margin: 30px auto;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            position: relative;
+
+            box-shadow:
+                0 15px 50px rgba(0,0,0,.2);
+
+        }
+
+
+        .order-modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom:
+                1px solid #eee;
+
+            padding-bottom: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .order-modal-header h2 {
+
+            margin: 0;
+
+            color: #6d8c3d;
+
+        }
+
+
+        .close-modal {
+
+            border: none;
+
+            background: #f1f1f1;
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+        }
+
+
+        .close-modal:hover {
+
+            background: #6d8c3d;
+
+            color: white;
+
+        }
+
+
+        /* ==========================================
+           CUSTOMER INFORMATION
+        ========================================== */
+
+        .order-info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .info-card {
+
+            background: #f7f9f4;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .info-card strong {
+
+            display: block;
+
+            color: #6d8c3d;
+
+            font-size: 13px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .info-card span {
+
+            color: #333;
+
+            word-break: break-word;
+
+        }
+
+
+        .full-width {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        /* ==========================================
+           PRODUCTS
+        ========================================== */
+
+        .order-products {
+
+            margin-top: 25px;
+
+        }
+
+
+        .order-products h3 {
+
+            color: #333;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .order-product {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            border-bottom:
+                1px solid #eee;
+
+        }
+
+
+        .order-product img {
+
+            width: 70px;
+
+            height: 70px;
+
+            object-fit: contain;
+
+            border-radius: 10px;
+
+            background: #f7f7f7;
+
+        }
+
+
+        .order-product-info {
+
+            flex: 1;
+
+        }
+
+
+        .order-product-info h4 {
+
+            margin: 0 0 5px;
+
+        }
+
+
+        .order-product-info p {
+
+            margin: 0;
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .order-product-price {
+
+            font-weight: 600;
+
+            color: #6d8c3d;
+
+        }
+
+
+        /* ==========================================
+           BILL SUMMARY
+        ========================================== */
+
+        .order-total-box {
+
+            margin-top: 25px;
+
+            background: #f7f9f4;
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+        }
+
+
+        .bill-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 7px 0;
+
+        }
+
+
+        .bill-total {
+
+            border-top:
+                2px solid #ddd;
+
+            margin-top: 10px;
+
+            padding-top: 15px;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #26752e;
+
+        }
+
+
+        /* ==========================================
+           PAYMENT BADGE
+        ========================================== */
+
+        .payment-badge {
+
+            display: inline-block;
+
+            background: #eef5df;
+
+            color: #56752d;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .order-info-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .order-modal {
+
+                padding: 10px;
+
+            }
+
+            .order-modal-content {
+
+                padding: 20px;
+
+            }
+
+            .order-product {
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TOP BAR
+========================================== -->
+
+<div class="top-bar">
+
+    <span>
+        🚚 Free Delivery on Orders Above ₹499
+    </span>
+
+    <span>
+        📞 +91 9876543210
+    </span>
+
+</div>
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>
+            M M Khakhra
+        </h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="admin-products.html">
+                Products
+            </a>
+
+        </li>
+
+        <li>
+
+            <a
+                href="admin-orders.html"
+                class="active">
+
+                Orders
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="manage-users.html">
+                Users
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="admin-dashboard.html">
+
+            <i class="fa-solid fa-gauge"></i>
+
+        </a>
+
+
+        <a href="index.html">
+
+            <i class="fa-solid fa-house"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ==========================================
+     ADMIN ORDERS
+========================================== -->
+
+<section class="admin-management">
+
+
+    <div class="management-header">
+
+        <p class="small-title">
+            ADMIN PANEL
+        </p>
+
+        <h1>
+            Manage Orders 🛒
+        </h1>
+
+        <p>
+            View and manage customer orders.
+        </p>
+
+    </div>
+
+
+    <div class="orders-box">
+
+        <table class="orders-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Customer
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Payment
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="ordersTable">
+
+                <tr>
+
+                    <td colspan="7"
+                        style="text-align:center;">
+
+                        Loading orders...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     ORDER DETAILS MODAL
+========================================== -->
+
+<div
+    id="orderModal"
+    class="order-modal">
+
+
+    <div class="order-modal-content">
+
+
+        <div class="order-modal-header">
+
+            <h2>
+                🧾 Order Details
+            </h2>
+
+
+            <button
+                class="close-modal"
+                onclick="closeOrderModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- CUSTOMER INFO -->
+
+        <div
+            id="orderCustomerInfo"
+            class="order-info-grid">
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div class="order-products">
+
+            <h3>
+                🛍 Products Ordered
+            </h3>
+
+
+            <div id="orderProducts">
+
+            </div>
+
+        </div>
+
+
+        <!-- BILL -->
+
+        <div
+            id="orderBill"
+            class="order-total-box">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<script src="js/admin-orders.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TOP BAR
+========================================== -->
+
+<div class="top-bar">
+
+    <span>
+        🚚 Free Delivery on Orders Above ₹499
+    </span>
+
+    <span>
+        📞 +91 9876543210
+    </span>
+
+</div>
+
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<header class="navbar">
+
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>
+            M M Khakhra
+        </h2>
+
+    </div>
+
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="products.html"
+                class="active">
+
+                Products
+
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">
+                Categories
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="navbarSearch"
+            placeholder="Search Khakhra..."
+            autocomplete="off">
+
+        <button id="navbarSearchBtn">
+
+            <i class="fa fa-search"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ICONS -->
+
+    <div class="icons">
+
+        <a href="wishlist.html">
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <a
+            href="#"
+            id="userIcon">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="cart-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- ==========================================
+     PRODUCTS SECTION
+========================================== -->
+
+<section class="products">
+
+
+    <h2>
+        Our Khakhra Collection
+    </h2>
+
+
+
+    <!-- FILTER BAR -->
+
+    <div class="filter-bar">
+
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search Khakhra">
+
+
+
+        <select id="flavorFilter">
+
+            <option value="">
+                All Flavours
+            </option>
+
+            <option value="Methi">
+                Methi
+            </option>
+
+            <option value="Plain">
+                Plain
+            </option>
+
+            <option value="Masala">
+                Masala
+            </option>
+
+            <option value="Jeera">
+                Jeera
+            </option>
+
+            <option value="Moong">
+                Moong
+            </option>
+
+        </select>
+
+
+
+        <select id="weightFilter">
+
+            <option value="">
+                All Weights
+            </option>
+
+            <option value="40g">
+                40g
+            </option>
+
+            <option value="200g">
+                200g
+            </option>
+
+        </select>
+
+
+
+        <select id="sortPrice">
+
+            <option value="">
+                Sort By Price
+            </option>
+
+            <option value="low">
+                Low to High
+            </option>
+
+            <option value="high">
+                High to Low
+            </option>
+
+        </select>
+
+
+    </div>
+
+
+
+    <!-- PRODUCT CONTAINER -->
+
+    <div class="product-container">
+
+        <!-- Products loaded using JavaScript -->
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast">
+
+    ✔️ Product added to cart
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="js/products.js"></script>
+
+<script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

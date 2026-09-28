@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .wishlist-page {
+            min-height: 70vh;
+            background: #f6f8f3;
+            padding: 45px 8% 80px;
+        }
+
+        .wishlist-header {
+            margin-bottom: 30px;
+        }
+
+        .wishlist-header h1 {
+            margin-bottom: 5px;
+        }
+
+        .wishlist-header p {
+            color: #777;
+        }
+
+        .wishlist-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .wishlist-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,.06);
+        }
+
+        .wishlist-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 15px;
+        }
+
+        .wishlist-body {
+            padding: 20px;
+        }
+
+        .wishlist-body h3 {
+            margin: 0 0 8px;
+        }
+
+        .wishlist-body p {
+            color: #777;
+        }
+
+        .wishlist-price {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+
+        .wishlist-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .wishlist-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .cart-wishlist-btn {
+            background: #6d8c3d;
+            color: white;
+        }
+
+        .remove-wishlist-btn {
+            background: #ffe9e9;
+            color: #d33;
+        }
+
+        .empty-wishlist {
+            text-align: center;
+            background: white;
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+
+        .empty-wishlist i {
+            font-size: 55px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .empty-wishlist h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty-wishlist p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .shop-btn-wishlist {
+            display: inline-block;
+            background: #6d8c3d;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+
+        @media(max-width: 1000px) {
+
+            .wishlist-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .wishlist-page {
+                padding: 30px 5%;
+            }
+
+            .wishlist-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png" alt="Logo">
+
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="products.html">Products</a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">Categories</a>
+        </li>
+
+        <li>
+            <a href="index.html#about">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="wishlist.html">
+
+            <i class="fa-solid fa-heart"></i>
+
+        </a>
+
+
+        <a href="#" id="accountLink">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+
+        <a href="cart.html" class="cart-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- WISHLIST -->
+
+<section class="wishlist-page">
+
+    <div class="wishlist-header">
+
+        <h1>❤️ My Wishlist</h1>
+
+        <p>
+            Your favourite Khakhras are saved here.
+        </p>
+
+    </div>
+
+
+    <div
+        id="wishlistContainer"
+        class="wishlist-container">
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h2>M M Khakhra</h2>
+
+    <p>Fresh • Crispy • Healthy</p>
+
+    <p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+<script src="js/wishlist.js"></script>
+
+</body>
+
+</html>

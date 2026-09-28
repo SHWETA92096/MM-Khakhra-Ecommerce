@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Messages | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .admin-management {
+            padding: 45px 8% 80px;
+            background: #f6f8f3;
+            min-height: 70vh;
+        }
+
+        .management-header {
+            background: linear-gradient(135deg, #6d8c3d, #8faa55);
+            color: white;
+            padding: 30px 35px;
+            border-radius: 22px;
+            margin-bottom: 30px;
+        }
+
+        .management-header h1 {
+            margin: 0 0 5px;
+        }
+
+        .management-header p {
+            margin: 0;
+            opacity: .9;
+        }
+
+        .messages-box {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.06);
+            overflow-x: auto;
+        }
+
+        .messages-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .messages-table th,
+        .messages-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .messages-table th {
+            color: #6d8c3d;
+        }
+
+        .message-text {
+            max-width: 300px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .status-select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .date-text {
+            white-space: nowrap;
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+
+            .admin-management {
+                padding: 30px 5% 60px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <span>
+        🚚 Free Delivery on Orders Above ₹499
+    </span>
+
+    <span>
+        📞 +91 9876543210
+    </span>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>
+            M M Khakhra
+        </h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-orders.html">
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="manage-users.html">
+                Users
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-messages.html"
+               class="active">
+                Messages
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="admin-dashboard.html">
+            <i class="fa-solid fa-gauge"></i>
+        </a>
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ADMIN MESSAGES -->
+
+<section class="admin-management">
+
+
+    <div class="management-header">
+
+        <p class="small-title">
+            ADMIN PANEL
+        </p>
+
+        <h1>
+            Contact Messages 💬
+        </h1>
+
+        <p>
+            View and manage messages received from customers.
+        </p>
+
+    </div>
+
+
+    <div class="messages-box">
+
+        <table class="messages-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Message</th>
+
+                    <th>Date</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="messagesTable">
+
+                <tr>
+
+                    <td colspan="6">
+                        Loading messages...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<script src="js/admin-messages.js"></script>
+
+</body>
+
+</html>

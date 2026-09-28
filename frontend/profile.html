@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png" alt="Logo">
+
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="products.html">Products</a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">Categories</a>
+        </li>
+
+        <li>
+            <a href="index.html#about">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="wishlist.html">
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+
+        <a href="profile.html">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+
+        <a href="cart.html" class="cart-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= USER DASHBOARD ================= -->
+
+<section class="user-dashboard">
+
+
+    <!-- Welcome -->
+
+    <div class="dashboard-welcome">
+
+        <div>
+
+            <p class="small-title">
+                MY ACCOUNT
+            </p>
+
+            <h1>
+                Welcome, <span id="welcomeName">User</span> 👋
+            </h1>
+
+            <p>
+                Manage your profile, orders, wishlist and shopping.
+            </p>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="logoutUser()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <!-- Dashboard Cards -->
+
+    <div class="dashboard-cards">
+
+
+        <!-- Orders -->
+
+        <a
+            href="#orders"
+            class="dashboard-card">
+
+            <div class="dashboard-icon orders-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    My Orders
+                </h3>
+
+                <p>
+                    View your orders
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <!-- Wishlist -->
+
+        <a
+            href="wishlist.html"
+            class="dashboard-card">
+
+            <div class="dashboard-icon wishlist-icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Wishlist
+                </h3>
+
+                <p>
+                    Your favourite products
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <!-- Cart -->
+
+        <a
+            href="cart.html"
+            class="dashboard-card">
+
+            <div class="dashboard-icon cart-icon-dashboard">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    My Cart
+                </h3>
+
+                <p>
+                    View your cart
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <!-- Profile -->
+
+        <a
+            href="#profile"
+            class="dashboard-card">
+
+            <div class="dashboard-icon profile-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    My Profile
+                </h3>
+
+                <p>
+                    Account information
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <!-- Address -->
+
+        <a
+            href="#address"
+            class="dashboard-card">
+
+            <div class="dashboard-icon address-icon">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    My Address
+                </h3>
+
+                <p>
+                    Manage delivery address
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <!-- Shopping -->
+
+        <a
+            href="products.html"
+            class="dashboard-card">
+
+            <div class="dashboard-icon shopping-icon">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Continue Shopping
+                </h3>
+
+                <p>
+                    Explore Khakhra
+                </p>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <div
+        class="account-section"
+        id="profile">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    ACCOUNT
+                </p>
+
+                <h2>
+                    Profile Information
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-information">
+
+
+            <div class="profile-avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div class="profile-details">
+
+
+                <div>
+
+                    <span>
+                        Full Name
+                    </span>
+
+                    <strong id="profileName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Email Address
+                    </span>
+
+                    <strong id="profileEmail">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Account Type
+                    </span>
+
+                    <strong>
+                        Customer
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Account Status
+                    </span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ORDERS ================= -->
+<!-- ================= ORDERS ================= -->
+
+<div
+    class="account-section"
+    id="orders">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="small-title">
+                SHOPPING
+            </p>
+
+            <h2>
+                My Orders
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- Orders will load here -->
+
+    <div id="ordersContainer">
+
+        <div class="empty-orders">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <h3>
+                Loading Orders...
+            </h3>
+
+            <p>
+                Please wait while we load your orders.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- ================= ADDRESS ================= -->
+
+    <div
+        class="account-section"
+        id="address">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    DELIVERY
+                </p>
+
+                <h2>
+                    My Address
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="empty-orders">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <h3>
+                No Address Added
+            </h3>
+
+            <p>
+                Your delivery address will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+<audio id="statusNotificationSound" preload="auto">
+    <source
+        src="sounds/order-notification.mp3"
+        type="audio/mpeg"
+    >
+<script src="http://192.168.0.104:5000/socket.io/socket.io.js"></script>
+<script src="js/profile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</audio>
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

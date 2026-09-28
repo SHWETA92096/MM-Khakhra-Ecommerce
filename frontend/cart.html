@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* ================= CART PAGE ================= */
+
+        .cart-page {
+            background: linear-gradient(135deg, #f6f8f3, #eef3e5);
+            min-height: 75vh;
+            padding: 50px 7% 90px;
+        }
+
+        .cart-header {
+            margin-bottom: 35px;
+        }
+
+        .cart-header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #30352b;
+        }
+
+        .cart-header p {
+            color: #777;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+
+        /* ================= CART LAYOUT ================= */
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 370px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* ================= CART PRODUCTS ================= */
+
+        .cart-items-box {
+            background: rgba(255,255,255,.95);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 12px 35px rgba(60,80,35,.09);
+            border: 1px solid #edf1e7;
+        }
+
+        .cart-box-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .cart-box-title h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #333;
+        }
+
+        #itemCount {
+            background: #eef5df;
+            color: #6d8c3d;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* ================= CART ITEM ================= */
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 110px 1fr auto;
+            gap: 22px;
+            align-items: center;
+            padding: 22px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #f5f7ef;
+            border: 1px solid #edf0e8;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .3s;
+        }
+
+        .cart-item-image:hover img {
+            transform: scale(1.08);
+        }
+
+        .cart-item-details h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .cart-item-details p {
+            margin: 5px 0;
+            color: #888;
+            font-size: 13px;
+        }
+
+        .cart-item-price {
+            color: #6d8c3d;
+            font-size: 19px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* ================= QUANTITY ================= */
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            margin-top: 13px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .quantity-box button {
+            width: 34px;
+            height: 34px;
+            border: none;
+            background: #f7f9f4;
+            cursor: pointer;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .quantity-box button:hover {
+            background: #6d8c3d;
+            color: white;
+        }
+
+        .quantity-box span {
+            width: 35px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* ================= REMOVE ================= */
+
+        .cart-item-actions {
+            text-align: right;
+        }
+
+        .remove-btn {
+            border: none;
+            background: #fff1f1;
+            color: #e53935;
+            padding: 9px 13px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .remove-btn:hover {
+            background: #e53935;
+            color: white;
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .cart-summary {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 12px 35px rgba(60,80,35,.10);
+            position: sticky;
+            top: 20px;
+            border: 1px solid #edf1e7;
+        }
+
+        .cart-summary h2 {
+            margin: 0 0 25px;
+            color: #333;
+            font-size: 23px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 17px 0;
+            color: #666;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 22px;
+            color: #222;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .delivery-free {
+            color: #188754;
+            font-weight: 700;
+        }
+
+        /* ================= CHECKOUT ================= */
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            border: none;
+            background: linear-gradient(135deg, #6d8c3d, #8faa55);
+            color: white;
+            padding: 16px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: .3s;
+            box-shadow: 0 8px 18px rgba(109,140,61,.25);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(109,140,61,.35);
+        }
+
+        .continue-btn {
+            display: block;
+            text-align: center;
+            margin-top: 17px;
+            color: #6d8c3d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .continue-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= SECURE BOX ================= */
+
+        .secure-cart-box {
+            margin-top: 23px;
+            background: #f5f9ee;
+            border-radius: 14px;
+            padding: 15px;
+            color: #5d7933;
+            font-size: 13px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ================= EMPTY CART ================= */
+
+        .empty-cart {
+            background: white;
+            border-radius: 25px;
+            padding: 80px 30px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(60,80,35,.09);
+        }
+
+        .empty-cart-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            background: #eef5df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .empty-cart-icon i {
+            font-size: 45px;
+            color: #6d8c3d;
+        }
+
+        .empty-cart h2 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .empty-cart p {
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        .shop-btn-cart {
+            display: inline-block;
+            background: #6d8c3d;
+            color: white;
+            padding: 13px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .shop-btn-cart:hover {
+            background: #58752e;
+            transform: translateY(-2px);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .cart-page {
+                padding: 30px 5% 60px;
+            }
+
+            .cart-header h1 {
+                font-size: 28px;
+            }
+
+            .cart-items-box,
+            .cart-summary {
+                padding: 20px;
+            }
+
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 15px;
+            }
+
+            .cart-item-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .cart-item-actions {
+                grid-column: 2;
+                text-align: left;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png" alt="Logo">
+
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="products.html">Products</a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">Categories</a>
+        </li>
+
+        <li>
+            <a href="index.html#about">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+    </ul>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="navbarSearch"
+            placeholder="Search Khakhra..."
+        >
+
+        <button onclick="navbarSearch()">
+
+            <i class="fa fa-search"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="icons">
+
+        <a href="wishlist.html">
+            <i class="fa-regular fa-heart"></i>
+        </a>
+
+        <a href="profile.html">
+            <i class="fa-regular fa-user"></i>
+        </a>
+
+        <a href="cart.html" class="cart-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CART PAGE ================= -->
+
+<section class="cart-page">
+
+    <div class="cart-header">
+
+        <h1>
+            🛒 My Shopping Cart
+        </h1>
+
+        <p>
+            Review your selected Khakhras before checkout.
+        </p>
+
+    </div>
+
+
+    <div id="cartContent">
+
+        <!-- Cart will load here -->
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>M M Khakhra</h2>
+
+    <p>
+        Fresh • Crispy • Healthy
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<script src="js/cart.js"></script>
+
+
+<script>
+
+function navbarSearch() {
+
+    const value =
+        document.getElementById("navbarSearch").value.trim();
+
+    if (value === "") {
+
+        window.location.href = "products.html";
+
+        return;
+
+    }
+
+    window.location.href =
+        "products.html?search=" +
+        encodeURIComponent(value);
+
+}
+
+
+document
+    .getElementById("navbarSearch")
+    .addEventListener("keypress", function(e) {
+
+        if (e.key === "Enter") {
+
+            navbarSearch();
+
+        }
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

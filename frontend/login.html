@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | M M Khakhra</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background-image:
+                linear-gradient(
+                    rgba(35, 55, 18, 0.55),
+                    rgba(35, 55, 18, 0.55)
+                ),
+                url("images/khakhra-bg.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+
+        }
+
+
+        /* ================= DECORATIVE BACKGROUND ================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+
+            top: -120px;
+
+            left: -100px;
+
+            z-index: 0;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.07);
+
+            bottom: -180px;
+
+            right: -120px;
+
+            z-index: 0;
+
+        }
+
+
+        /* ================= BACK HOME ================= */
+
+        .back-home {
+
+            position: fixed;
+
+            top: 20px;
+
+            left: 20px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background: rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(10px);
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            z-index: 10;
+
+            transition: 0.3s;
+
+        }
+
+
+        .back-home:hover {
+
+            background: white;
+
+            color: #5d7f31;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* ================= LOGIN BOX ================= */
+
+        .login-box {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 100%;
+
+            max-width: 390px;
+
+            background: rgba(255,255,255,0.97);
+
+            padding: 28px 34px 25px;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.30);
+
+            border: 1px solid rgba(255,255,255,0.8);
+
+            animation: appear 0.7s ease;
+
+        }
+
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px) scale(0.97);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0) scale(1);
+
+            }
+
+        }
+
+
+        /* ================= LOGO ================= */
+
+        .login-logo {
+
+            width: 70px;
+
+            height: 70px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 4px solid #eef5df;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .brand-name {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #5d7f31;
+
+        }
+
+
+        .brand-tagline {
+
+            color: #888;
+
+            font-size: 12px;
+
+            margin-top: 3px;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        /* ================= LOGIN ICON ================= */
+
+        .login-icon {
+
+            width: 44px;
+
+            height: 44px;
+
+            margin: auto;
+
+            margin-bottom: 10px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #eef5df;
+
+            color: #638633;
+
+            font-size: 18px;
+
+        }
+
+
+        .login-box h1 {
+
+            font-size: 25px;
+
+            color: #222;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .login-subtitle {
+
+            color: #888;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* ================= INPUT ================= */
+
+        .input-group {
+
+            position: relative;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .input-group > i:first-child {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #6d8c3d;
+
+            font-size: 15px;
+
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 43px;
+
+            border: 1px solid #dfe5d7;
+
+            border-radius: 11px;
+
+            background: #fafcf8;
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .input-group input:focus {
+
+            background: white;
+
+            border-color: #6d8c3d;
+
+            box-shadow:
+                0 0 0 3px rgba(109,140,61,0.10);
+
+        }
+
+
+        .input-group input::placeholder {
+
+            color: #aaa;
+
+        }
+
+
+        /* ================= PASSWORD EYE ================= */
+
+        .password-eye {
+
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #888;
+
+            cursor: pointer;
+
+        }
+
+
+        .password-eye:hover {
+
+            color: #6d8c3d;
+
+        }
+
+
+        /* ================= OPTIONS ================= */
+
+        .login-options {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin: 2px 0 17px;
+
+            font-size: 11px;
+
+        }
+
+
+        .remember {
+
+            color: #777;
+
+            display: flex;
+
+            gap: 5px;
+
+            align-items: center;
+
+        }
+
+
+        .remember input {
+
+            accent-color: #6d8c3d;
+
+        }
+
+
+        .forgot-password {
+
+            color: #6d8c3d;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        .forgot-password:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-btn {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #55782c,
+                    #83a94a
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 18px rgba(85,120,44,0.25);
+
+            transition: 0.3s;
+
+        }
+
+
+        .login-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(85,120,44,0.35);
+
+        }
+
+
+        .login-btn i {
+
+            margin-right: 6px;
+
+        }
+
+
+        /* ================= SIGNUP ================= */
+
+        .signup-text {
+
+            margin-top: 16px;
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        .signup-text a {
+
+            color: #5d7f31;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+        }
+
+
+        .signup-text a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= SECURITY ================= */
+
+        .security-text {
+
+            margin-top: 12px;
+
+            color: #aaa;
+
+            font-size: 10px;
+
+        }
+
+
+        .security-text i {
+
+            color: #6d8c3d;
+
+            margin-right: 3px;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 500px) {
+
+            body {
+
+                padding: 15px;
+
+            }
+
+
+            .login-box {
+
+                max-width: 350px;
+
+                padding: 25px 24px 22px;
+
+            }
+
+
+            .back-home {
+
+                top: 12px;
+
+                left: 12px;
+
+                font-size: 12px;
+
+                padding: 8px 13px;
+
+            }
+
+
+            .login-logo {
+
+                width: 62px;
+
+                height: 62px;
+
+            }
+
+
+            .brand-name {
+
+                font-size: 21px;
+
+            }
+
+
+            .login-box h1 {
+
+                font-size: 23px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= BACK HOME ================= -->
+
+<a href="index.html" class="back-home">
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Home
+
+</a>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div class="login-box">
+
+
+    <img
+        src="images/logo.png"
+        alt="M M Khakhra"
+        class="login-logo"
+    >
+
+
+    <div class="brand-name">
+        M M Khakhra
+    </div>
+
+
+    <div class="brand-tagline">
+        Fresh • Crispy • Healthy
+    </div>
+
+
+    <div class="login-icon">
+
+        <i class="fa-solid fa-right-to-bracket"></i>
+
+    </div>
+
+
+    <h1>
+        Welcome Back 👋
+    </h1>
+
+
+    <p class="login-subtitle">
+        Login to continue shopping
+    </p>
+
+
+    <!-- ================= FORM ================= -->
+
+    <form id="loginForm">
+
+
+        <div class="input-group">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
+
+            <i
+                class="fa-solid fa-eye password-eye"
+                id="togglePassword">
+            </i>
+
+        </div>
+
+
+        <div class="login-options">
+
+
+            <label class="remember">
+
+                <input
+                    type="checkbox"
+                    id="rememberMe"
+                >
+
+                Remember me
+
+            </label>
+
+
+            <a
+                href="#"
+                class="forgot-password"
+                id="forgotPasswordLink">
+
+                Forgot Password?
+
+            </a>
+
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="login-btn">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Login
+
+        </button>
+
+
+    </form>
+
+
+    <p class="signup-text">
+
+        Don't have an account?
+
+        <a href="signup.html">
+            Sign Up
+        </a>
+
+    </p>
+
+
+    <p class="security-text">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        Secure Login • Your information is protected
+
+    </p>
+
+
+</div>
+
+
+<!-- ================= LOGIN JS ================= -->
+
+<script src="js/login.js"></script>
+
+
+<!-- ================= FORGOT PASSWORD ================= -->
+
+<script>
+
+document
+    .getElementById("forgotPasswordLink")
+    .addEventListener("click", async function (event) {
+
+        event.preventDefault();
+
+        const emailInput =
+            document.getElementById("email");
+
+        const email =
+            emailInput.value.trim();
+
+
+        // Check email
+        if (!email) {
+
+            alert(
+                "Please enter your email address first."
+            );
+
+            emailInput.focus();
+
+            return;
+        }
+
+
+        try {
+
+            const response = await fetch(
+                "http://192.168.0.104:5000/api/auth/forgot-password",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email
+                    })
+                }
+            );
+
+
+            const data =
+                await response.json();
+
+
+            alert(data.message);
+
+
+        } catch (error) {
+
+            console.error(
+                "Forgot Password Error:",
+                error
+            );
+
+            alert(
+                "Unable to connect to the server. Please try again."
+            );
+
+        }
+
+    });
+
+</script>
+
+
+<!-- ================= PASSWORD SHOW / HIDE ================= -->
+
+<script>
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const password =
+    document.getElementById("password");
+
+
+togglePassword.addEventListener(
+    "click",
+    function () {
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            this.classList.remove("fa-eye");
+
+            this.classList.add("fa-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            this.classList.remove("fa-eye-slash");
+
+            this.classList.add("fa-eye");
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

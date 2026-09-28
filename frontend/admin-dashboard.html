@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | M M Khakhra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png" alt="Logo">
+
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#categories">
+                Categories
+            </a>
+        </li>
+
+        <li>
+            <a href="index.html#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="index.html" title="Website">
+
+            <i class="fa-solid fa-globe"></i>
+
+        </a>
+
+        <a href="admin-dashboard.html" title="Admin">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </a>
+
+        <a href="#" onclick="adminLogout()" title="Logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section class="admin-dashboard">
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <div class="admin-welcome">
+
+        <div>
+
+            <p class="small-title">
+                ADMIN PANEL
+            </p>
+
+            <h1>
+                Welcome, <span id="adminName">Admin</span> 👋
+            </h1>
+
+            <p>
+                Manage your products, orders, users, messages and store.
+            </p>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="adminLogout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <!-- ================= STAT CARDS ================= -->
+
+    <div class="admin-stat-cards">
+
+
+        <!-- Products -->
+
+        <a href="admin-products.html"
+           class="admin-stat-card">
+
+            <div class="admin-stat-icon products-admin-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Total Products
+                </p>
+
+                <h2 id="productCount">
+                    0
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <!-- Orders -->
+
+        <a href="admin-orders.html"
+           class="admin-stat-card">
+
+            <div class="admin-stat-icon orders-admin-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Total Orders
+                </p>
+
+                <h2 id="orderCount">
+                    0
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <!-- Users -->
+
+        <a href="manage-users.html"
+           class="admin-stat-card">
+
+            <div class="admin-stat-icon users-admin-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Total Users
+                </p>
+
+                <h2 id="userCount">
+                    0
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <!-- Revenue -->
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon revenue-admin-icon">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Total Revenue
+                </p>
+
+                <h2 id="revenueCount">
+                    ₹0
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SALES ANALYTICS ================= -->
+
+    <div class="admin-section sales-analytics-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    ANALYTICS
+                </p>
+
+                <h2>
+                    Sales Analytics
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="sales-chart-container">
+
+            <canvas id="salesChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MANAGEMENT CARDS ================= -->
+
+    <div class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    MANAGEMENT
+                </p>
+
+                <h2>
+                    Store Management
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-management-cards">
+
+
+            <!-- MANAGE PRODUCTS -->
+
+            <a href="admin-products.html"
+               class="admin-management-card">
+
+                <div class="management-icon product-management-icon">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage Products
+                    </h3>
+
+                    <p>
+                        Add, edit and delete Khakhra products.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- MANAGE ORDERS -->
+
+            <a href="admin-orders.html"
+               class="admin-management-card">
+
+                <div class="management-icon order-management-icon">
+
+                    <i class="fa-solid fa-truck"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage Orders
+                    </h3>
+
+                    <p>
+                        View orders and update order status.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- ORDER TAKING -->
+
+            <div class="admin-management-card order-taking-card">
+
+                <div class="management-icon order-taking-management-icon">
+
+                    <i class="fa-solid fa-store"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Order Taking
+                    </h3>
+
+                    <p id="orderTakingStatus">
+                        Checking order status...
+                    </p>
+
+                    <button
+                        id="orderTakingToggle"
+                        class="order-taking-btn"
+                        onclick="toggleOrderTaking()">
+
+                        Checking...
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MANAGE USERS -->
+
+            <a href="manage-users.html"
+               class="admin-management-card">
+
+                <div class="management-icon user-management-icon">
+
+                    <i class="fa-solid fa-users-gear"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage Users
+                    </h3>
+
+                    <p>
+                        View users and manage admin roles.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- MANAGE MESSAGES -->
+
+            <a href="admin-messages.html"
+               class="admin-management-card">
+
+                <div class="management-icon message-management-icon">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage Messages
+                    </h3>
+
+                    <p>
+                        View and manage customer messages.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- MANAGE REVIEWS -->
+
+            <a href="admin-reviews.html"
+               class="admin-management-card">
+
+                <div class="management-icon review-management-icon">
+
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manage Reviews
+                    </h3>
+
+                    <p>
+                        View and manage customer reviews and ratings.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- VIEW WEBSITE -->
+
+            <a href="index.html"
+               class="admin-management-card">
+
+                <div class="management-icon website-management-icon">
+
+                    <i class="fa-solid fa-store"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        View Website
+                    </h3>
+
+                    <p>
+                        Open the customer shopping website.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RECENT ORDERS ================= -->
+
+    <div class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    ORDERS
+                </p>
+
+                <h2>
+                    Recent Orders
+                </h2>
+
+            </div>
+
+            <a href="admin-orders.html"
+               class="view-all">
+
+                View All →
+
+            </a>
+
+        </div>
+
+
+        <div id="recentOrders"
+             class="recent-orders">
+
+            <div class="admin-empty">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <h3>
+                    No Recent Orders
+                </h3>
+
+                <p>
+                    New customer orders will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Admin Panel • Store Management
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<!-- Socket.IO -->
+<script src="http://192.168.0.104:5000/socket.io/socket.io.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ================= NOTIFICATION SOUND ================= -->
+
+<audio id="orderNotificationSound" preload="auto">
+    <source
+        src="sounds/order-notification.mp3"
+        type="audio/mpeg">
+</audio>
+
+
+<!-- ================= SOUND TEST ================= -->
+
+<div style="
+    text-align: center;
+    margin: 20px;
+">
+
+    <button
+        onclick="testNotificationSound()"
+        style="
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #6d8c3d;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        "
+    >
+
+        🔊 Test Notification Sound
+
+    </button>
+
+</div>
+
+
+<script>
+
+function testNotificationSound() {
+
+    const sound =
+        document.getElementById("orderNotificationSound");
+
+    if (!sound) {
+
+        console.error(
+            "❌ Audio element not found."
+        );
+
+        alert(
+            "Audio element not found."
+        );
+
+        return;
+    }
+
+
+    sound.currentTime = 0;
+
+
+    sound.play()
+
+        .then(() => {
+
+            console.log(
+                "🔊 Sound played successfully."
+            );
+
+        })
+
+        .catch((error) => {
+
+            console.error(
+                "🔇 Sound error:",
+                error
+            );
+
+            alert(
+                "Sound could not be played.\n\n" +
+                error.message
+            );
+
+        });
+
+}
+
+</script>
+
+
+<!-- ================= ADMIN DASHBOARD JS ================= -->
+
+<script src="js/admin-dashboard.js"></script>
+
+
+</body>
+
+</html>

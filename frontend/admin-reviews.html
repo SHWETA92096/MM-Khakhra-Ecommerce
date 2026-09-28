@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Reviews | M M Khakhra</title>
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <link rel="stylesheet"
+        href="css/responsive.css">
+
+    <link rel="stylesheet"
+        href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <span>🚚 Free Delivery on Orders Above ₹499</span>
+
+    <span>📞 +91 9876543210</span>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png"
+                alt="Logo">
+
+        </a>
+
+        <h2>M M Khakhra</h2>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-orders.html">
+                Orders
+            </a>
+        </li>
+
+        <li>
+            <a href="manage-users.html">
+                Users
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="icons">
+
+        <a href="admin-dashboard.html"
+            title="Dashboard">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </a>
+
+        <a href="#"
+            onclick="adminLogout()"
+            title="Logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= ADMIN REVIEWS ================= -->
+
+<section class="admin-dashboard">
+
+    <div class="admin-welcome">
+
+        <div>
+
+            <p class="small-title">
+                ADMIN PANEL
+            </p>
+
+            <h1>
+                Manage Reviews ⭐
+            </h1>
+
+            <p>
+                View customer reviews and ratings.
+            </p>
+
+        </div>
+
+
+        <a href="admin-dashboard.html"
+            class="logout-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= REVIEWS SECTION ================= -->
+
+    <div class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    CUSTOMER FEEDBACK
+                </p>
+
+                <h2>
+                    Customer Reviews
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div id="adminReviewsList">
+
+            <div class="admin-empty">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <h3>
+                    Loading Reviews...
+                </h3>
+
+                <p>
+                    Please wait.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+        M M Khakhra
+    </h2>
+
+    <p>
+        Admin Panel • Review Management
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+
+</footer>
+
+
+<script src="js/admin-reviews.js"></script>
+
+</body>
+
+</html>
