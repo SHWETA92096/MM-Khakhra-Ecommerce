@@ -8,7 +8,7 @@
 // ==========================================
 
 const socket =
-    io("https://mm-khakhra-ecommerce.onrender.com");
+    io("http://192.168.0.104:5000");
 
 
 socket.on(
@@ -200,7 +200,7 @@ async function loadDashboardData() {
 
         const productResponse =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/products"
+                "http://192.168.0.104:5000/api/products"
             );
 
 
@@ -241,7 +241,7 @@ async function loadDashboardData() {
 
         const userResponse =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/users",
+                "http://192.168.0.104:5000/api/users",
                 {
 
                     method: "GET",
@@ -290,7 +290,7 @@ async function loadDashboardData() {
 
         const orderResponse =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/orders"
+                "http://192.168.0.104:5000/api/orders"
             );
 
 
@@ -874,7 +874,7 @@ async function loadOrderTakingStatus() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/shop/status"
+                "http://192.168.0.104:5000/api/shop/status"
             );
 
 
@@ -1070,7 +1070,7 @@ async function toggleOrderTaking() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/shop/status",
+                "http://192.168.0.104:5000/api/shop/status",
                 {
 
                     method:

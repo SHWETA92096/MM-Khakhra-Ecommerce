@@ -14,7 +14,7 @@ async function checkOrderStatus() {
     try {
 
         const response = await fetch(
-            "https://mm-khakhra-ecommerce.onrender.com/api/shop/status"
+            "http://192.168.0.104:5000/api/shop/status"
         );
 
         if (!response.ok) {

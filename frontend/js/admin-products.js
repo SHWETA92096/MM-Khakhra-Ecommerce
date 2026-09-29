@@ -22,7 +22,7 @@ if (user.role !== "admin") {
 // API URL
 // ==========================================
 
-const API_URL = "https://mm-khakhra-ecommerce.onrender.com/api/products";
+const API_URL = "http://192.168.0.104:5000/api/products";
 
 
 // ==========================================
@@ -75,7 +75,7 @@ async function loadProducts() {
 
             const imagePath =
                 product.image
-                    ? `https://mm-khakhra-ecommerce.onrender.com/uploads/${product.image}`
+                    ? `http://192.168.0.104:5000/uploads/${product.image}`
                     : "images/logo.png";
 
 

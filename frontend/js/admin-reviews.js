@@ -45,7 +45,7 @@ async function loadAdminReviews() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/reviews/admin/all",
+                "http://192.168.0.104:5000/api/reviews/admin/all",
                 {
                     method: "GET",
 
@@ -323,7 +323,7 @@ async function deleteReview(reviewId) {
 
         const response =
             await fetch(
-                `https://mm-khakhra-ecommerce.onrender.com/api/reviews/admin/${reviewId}`,
+                `http://192.168.0.104:5000/api/reviews/admin/${reviewId}`,
                 {
                     method: "DELETE",
 

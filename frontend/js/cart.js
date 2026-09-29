@@ -102,7 +102,7 @@ function loadCart() {
                             <div class="cart-item-image">
 
                                 <img
-                                    src="https://mm-khakhra-ecommerce.onrender.com/uploads/${item.image}"
+                                    src="http://192.168.0.104:5000/uploads/${item.image}"
                                     alt="${item.name}"
                                     onerror="this.src='images/logo.png'"
                                 >

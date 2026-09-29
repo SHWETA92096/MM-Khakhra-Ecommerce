@@ -72,7 +72,7 @@ async function loadOrders() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/orders"
+                "http://192.168.0.104:5000/api/orders"
             );
 
 
@@ -357,7 +357,7 @@ async function changeStatus(
 
         const response =
             await fetch(
-                `https://mm-khakhra-ecommerce.onrender.com/api/orders/${id}/status`,
+                `http://192.168.0.104:5000/api/orders/${id}/status`,
                 {
 
                     method: "PUT",
@@ -429,7 +429,7 @@ async function viewOrder(id) {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/orders"
+                "http://192.168.0.104:5000/api/orders"
             );
 
 

@@ -7,7 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     try {
 
-        const response = await fetch("https://mm-khakhra-ecommerce.onrender.com/api/auth/login", {
+        const response = await fetch("http://192.168.0.104:5000/api/auth/login", {
 
             method: "POST",
 

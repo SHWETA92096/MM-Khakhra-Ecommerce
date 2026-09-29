@@ -63,7 +63,7 @@ async function loadUsers() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/users",
+                "http://192.168.0.104:5000/api/users",
                 {
                     method: "GET",
 
@@ -358,7 +358,7 @@ async function makeAdmin(
 
         const response =
             await fetch(
-                `https://mm-khakhra-ecommerce.onrender.com/api/users/make-admin/${id}`,
+                `http://192.168.0.104:5000/api/users/make-admin/${id}`,
                 {
 
                     method: "PUT",

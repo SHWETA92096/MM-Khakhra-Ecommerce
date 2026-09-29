@@ -53,7 +53,7 @@ async function loadMessages() {
 
         const response =
             await fetch(
-                "https://mm-khakhra-ecommerce.onrender.com/api/contact"
+                "http://192.168.0.104:5000/api/contact"
             );
 
 
@@ -238,7 +238,7 @@ async function changeMessageStatus(
 
         const response =
             await fetch(
-                `https://mm-khakhra-ecommerce.onrender.com/api/contact/${id}/status`,
+                `http://192.168.0.104:5000/api/contact/${id}/status`,
                 {
 
                     method: "PUT",
