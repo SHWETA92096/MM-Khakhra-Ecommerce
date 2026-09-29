@@ -371,7 +371,7 @@ document
 
                 const statusResponse =
                     await fetch(
-                        "http://192.168.0.104:5000/api/shop/status"
+                        "https://mm-khakhra-ecommerce.onrender.com/api/shop/status"
                     );
 
 
@@ -419,7 +419,7 @@ document
 
                 const response =
                     await fetch(
-                        "http://192.168.0.104:5000/api/orders",
+                        "https://mm-khakhra-ecommerce.onrender.com/api/orders",
                         {
 
                             method: "POST",
@@ -460,7 +460,7 @@ document
                         try {
 
                             await fetch(
-                                "http://192.168.0.104:5000/api/discounts/use",
+                                "https://mm-khakhra-ecommerce.onrender.com/api/discounts/use",
                                 {
 
                                     method: "PUT",
@@ -713,7 +713,7 @@ async function applyDiscount() {
 
         const response =
             await fetch(
-                "http://192.168.0.104:5000/api/discounts/validate",
+                "https://mm-khakhra-ecommerce.onrender.com/api/discounts/validate",
                 {
 
                     method: "POST",

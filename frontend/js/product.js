@@ -32,7 +32,7 @@ async function loadProduct() {
 
         // Fetch product from backend
         const response = await fetch(
-            `http://192.168.0.104:5000/api/products/${productId}`
+            `https://mm-khakhra-ecommerce.onrender.com/api/products/${productId}`
         );
 
 
@@ -59,7 +59,7 @@ async function loadProduct() {
         if (product.image) {
 
             productImage.src =
-                `http://192.168.0.104:5000/uploads/${product.image}`;
+                `https://mm-khakhra-ecommerce.onrender.com/uploads/${product.image}`;
 
         } else {
 
@@ -1098,7 +1098,7 @@ async function loadReviews() {
 
         const response =
             await fetch(
-                `http://192.168.0.104:5000/api/reviews/product/${productId}`
+                `https://mm-khakhra-ecommerce.onrender.com/api/reviews/product/${productId}`
             );
 
 
@@ -1312,7 +1312,7 @@ if (submitReviewBtn) {
 
                 const response =
                     await fetch(
-                        "http://192.168.0.104:5000/api/reviews",
+                        "https://mm-khakhra-ecommerce.onrender.com/api/reviews",
                         {
                             method: "POST",
 
@@ -1445,7 +1445,7 @@ async function loadProductRating() {
 
     try {
         const response = await fetch(
-            `http://192.168.0.104:5000/api/reviews/product/${productId}`
+            `https://mm-khakhra-ecommerce.onrender.com/api/reviews/product/${productId}`
         );
 
         if (!response.ok) {

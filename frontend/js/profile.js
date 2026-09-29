@@ -129,21 +129,21 @@ function getProductImage(image) {
 
     if (image.startsWith("/uploads/")) {
 
-        return `http://192.168.0.104:5000${image}`;
+        return `https://mm-khakhra-ecommerce.onrender.com${image}`;
 
     }
 
 
     if (image.startsWith("uploads/")) {
 
-        return `http://192.168.0.104:5000/${image}`;
+        return `https://mm-khakhra-ecommerce.onrender.com/${image}`;
 
     }
 
 
     // Plain filename
 
-    return `http://192.168.0.104:5000/uploads/${image}`;
+    return `https://mm-khakhra-ecommerce.onrender.com/uploads/${image}`;
 
 }
 
@@ -171,7 +171,7 @@ async function loadUserOrders() {
 
         const response =
             await fetch(
-                `http://192.168.0.104:5000/api/orders/user/${user.id}`
+                `https://mm-khakhra-ecommerce.onrender.com/api/orders/user/${user.id}`
             );
 
 
@@ -531,7 +531,7 @@ async function deleteOrder(orderId) {
 
         const response =
             await fetch(
-                `http://192.168.0.104:5000/api/orders/${orderId}`,
+                `https://mm-khakhra-ecommerce.onrender.com/api/orders/${orderId}`,
                 {
                     method: "DELETE"
                 }
@@ -590,7 +590,7 @@ async function downloadInvoice(orderId) {
 
         const response =
             await fetch(
-                `http://192.168.0.104:5000/api/orders/${orderId}`
+                `https://mm-khakhra-ecommerce.onrender.com/api/orders/${orderId}`
             );
 
 
@@ -1071,7 +1071,7 @@ document.addEventListener(
 // ==========================================
 
 const orderSocket =
-    io("http://192.168.0.104:5000");
+    io("https://mm-khakhra-ecommerce.onrender.com");
 
 
 // ==========================================
